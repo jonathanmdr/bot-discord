@@ -23,7 +23,7 @@ public class ImcCommand {
 
         if (separatedParameters.length != TOTAL_PARAMETERS) {
             log.warning("Total of parameters received doesn't supported!");
-            return "Não consegui entender sua mensagem =( \n Me envie novamente seguindo o seguinte formato: `!imc {nome} {altura} {peso}`";
+            return "Não consegui entender sua mensagem =( \nMe envie novamente seguindo o seguinte formato: `!imc {nome} {altura} {peso}`";
         }
 
         String name = separatedParameters[1];

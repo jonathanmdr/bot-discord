@@ -12,7 +12,7 @@ public class ImcResponse {
         if (imcRange.isPresent()) {
             message = imcRange.get().getStatus();
         }
-        return format("%s seu IMC é: %s \n %s", username, userImc, message);
+        return format("%s seu IMC é: %s \n%s", username, userImc, message);
     }
 
 }
