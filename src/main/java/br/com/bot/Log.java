@@ -1,10 +1,10 @@
 package br.com.bot;
 
-import java.util.logging.Logger;
+import org.apache.log4j.Logger;
 
 public class Log {
 
-    private static final Logger logger = Logger.getLogger(Log.class.getName());
+    private static final Logger logger = Logger.getRootLogger();
 
     private Log() {
         throw new IllegalStateException("Utility class");
@@ -15,7 +15,11 @@ public class Log {
     }
 
     public static void warning(String message) {
-        logger.warning(message);
+        logger.warn(message);
+    }
+
+    public static void error(String message) {
+        logger.error(message);
     }
 
 }

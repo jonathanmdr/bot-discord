@@ -1,6 +1,7 @@
 package br.com.bot;
 
 import static br.com.bot.ImcRange.getImcRange;
+import static br.com.bot.Log.error;
 import static br.com.bot.Log.warning;
 import static java.lang.Double.parseDouble;
 import static java.lang.String.format;
@@ -35,7 +36,7 @@ public class ImcCommand {
             height = parseDouble(separatedParameters[2]);
             weight = parseDouble(separatedParameters[3]);
         } catch(NumberFormatException ex) {
-            warning("Received invalid height or weight parameters!");
+            error("Received invalid height or weight parameters!".concat("Error: ").concat(ex.getLocalizedMessage()));
             return format("%s\n%s", messagesProperties.getInvalidNumber(), messagesProperties.getUsage());
         }
 
