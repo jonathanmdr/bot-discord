@@ -27,8 +27,8 @@ public class ImcCommand {
         }
 
         String name = separatedParameters[1];
-        double height = 0.0;
-        double weight = 0.0;
+        double height;
+        double weight;
 
         try {
             height = parseDouble(separatedParameters[2]);
