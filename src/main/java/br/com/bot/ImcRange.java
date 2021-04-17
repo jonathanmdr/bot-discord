@@ -7,11 +7,11 @@ import java.util.Optional;
 public class ImcRange {
 
     private static final List<ImcRange> rangeList = Arrays.asList(
-            new ImcRange(0,18.5, "Se cuida bater um vento meio forte tu voa hahah"),
-            new ImcRange(18.5,  24.9, "Tá tranquilo, pode comer doritos com coca!"),
-            new ImcRange(25.0,  29.9, "Tu tá bem, anda malhando?"),
-            new ImcRange(30.0,  39.9, "Já pensou em se exercitar um pouco?"),
-            new ImcRange(40.0,  0, "DIETA E ACADEMIA, JÁ!")
+            new ImcRange(0, 18.5, "Se cuida bater um vento meio forte tu voa hahah"),
+            new ImcRange(18.5, 24.9, "Tá tranquilo, pode comer doritos com coca!"),
+            new ImcRange(25.0, 29.9, "Tu tá bem, anda malhando?"),
+            new ImcRange(30.0, 39.9, "Já pensou em se exercitar um pouco?"),
+            new ImcRange(40.0, 0, "DIETA E ACADEMIA, JÁ!")
     );
 
     private final double minValue;
