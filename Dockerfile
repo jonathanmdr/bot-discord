@@ -6,7 +6,7 @@ COPY . /build
 
 RUN cd /build && mvn clean install
 
-RUN mkdir /app && mv /build/target/obot-1.0-shaded.jar /app/obot-1.0-shaded.jar
+RUN mkdir /app && mv /build/target/obot-1.0-shaded.jar /app/obot.jar
 
 FROM azul/zulu-openjdk:11.0.10
 
@@ -19,4 +19,4 @@ COPY --from=builder /app/* /app
 
 WORKDIR /app
 
-ENTRYPOINT ["java", "-jar", "obot-1.0-shaded.jar"]
+ENTRYPOINT ["java", "-jar", "obot.jar"]
