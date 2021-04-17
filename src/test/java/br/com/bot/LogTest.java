@@ -1,5 +1,7 @@
 package br.com.bot;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.ArgumentCaptor.forClass;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
@@ -7,7 +9,6 @@ import org.apache.log4j.Appender;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.apache.log4j.spi.LoggingEvent;
-import org.assertj.core.api.Assertions;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -27,39 +28,39 @@ public class LogTest {
     public void validateInfoLogInteraction() {
         Log.info("Info interaction!");
 
-        ArgumentCaptor<LoggingEvent> argument = ArgumentCaptor.forClass(LoggingEvent.class);
+        ArgumentCaptor<LoggingEvent> argument = forClass(LoggingEvent.class);
 
         verify(appender).doAppend(argument.capture());
 
-        Assertions.assertThat(argument.getValue().getLevel()).isEqualTo(Level.INFO);
-        Assertions.assertThat(argument.getValue().getMessage()).isEqualTo("Info interaction!");
-        Assertions.assertThat(argument.getValue().getLoggerName()).isEqualTo("root");
+        assertThat(argument.getValue().getLevel()).isEqualTo(Level.INFO);
+        assertThat(argument.getValue().getMessage()).isEqualTo("Info interaction!");
+        assertThat(argument.getValue().getLoggerName()).isEqualTo("root");
     }
 
     @Test
     public void validateWarningLogInteraction() {
         Log.warning("Warning interaction!");
 
-        ArgumentCaptor<LoggingEvent> argument = ArgumentCaptor.forClass(LoggingEvent.class);
+        ArgumentCaptor<LoggingEvent> argument = forClass(LoggingEvent.class);
 
         verify(appender).doAppend(argument.capture());
 
-        Assertions.assertThat(argument.getValue().getLevel()).isEqualTo(Level.WARN);
-        Assertions.assertThat(argument.getValue().getMessage()).isEqualTo("Warning interaction!");
-        Assertions.assertThat(argument.getValue().getLoggerName()).isEqualTo("root");
+        assertThat(argument.getValue().getLevel()).isEqualTo(Level.WARN);
+        assertThat(argument.getValue().getMessage()).isEqualTo("Warning interaction!");
+        assertThat(argument.getValue().getLoggerName()).isEqualTo("root");
     }
 
     @Test
     public void validateErrorLogInteraction() {
         Log.error("Error interaction!");
 
-        ArgumentCaptor<LoggingEvent> argument = ArgumentCaptor.forClass(LoggingEvent.class);
+        ArgumentCaptor<LoggingEvent> argument = forClass(LoggingEvent.class);
 
         verify(appender).doAppend(argument.capture());
 
-        Assertions.assertThat(argument.getValue().getLevel()).isEqualTo(Level.ERROR);
-        Assertions.assertThat(argument.getValue().getMessage()).isEqualTo("Error interaction!");
-        Assertions.assertThat(argument.getValue().getLoggerName()).isEqualTo("root");
+        assertThat(argument.getValue().getLevel()).isEqualTo(Level.ERROR);
+        assertThat(argument.getValue().getMessage()).isEqualTo("Error interaction!");
+        assertThat(argument.getValue().getLoggerName()).isEqualTo("root");
     }
 
     @After

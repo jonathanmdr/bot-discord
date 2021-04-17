@@ -10,7 +10,7 @@ import java.util.Optional;
 
 public class ImcCommand {
 
-    private static final int TOTAL_PARAMETERS = 4;
+    private static final int PARAMETERS_LIMIT = 4;
 
     private final ImcResponse imcResponse;
     private final MessagesProperties messagesProperties;
@@ -23,7 +23,7 @@ public class ImcCommand {
     public String execute(String message) {
         String[] separatedParameters = message.split(" ");
 
-        if (separatedParameters.length != TOTAL_PARAMETERS) {
+        if (separatedParameters.length != PARAMETERS_LIMIT) {
             warning("Total of parameters received doesn't supported!");
             return format("%s\n%s", messagesProperties.getExceededParameters(), messagesProperties.getUsage());
         }
