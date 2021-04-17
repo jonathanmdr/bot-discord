@@ -19,11 +19,11 @@ spec:
                 name: obot-secret
           resources:
             requests:
-              cpu: 500m
-              memory: 1Gi
+              cpu: 128m
+              memory: 500Mi
             limits:
-              cpu: 1
-              memory: 2Gi
+              cpu: 256m
+              memory: 1Gi
   selector:
     matchLabels:
       app: obot
