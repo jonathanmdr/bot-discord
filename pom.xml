@@ -10,7 +10,6 @@
         <java.version>11</java.version>
         <encoding.type>UTF8</encoding.type>
         <javacord.version>3.1.1</javacord.version>
-        <log4j.version>1.2.17</log4j.version>
     </properties>
 
     <dependencies>
@@ -19,11 +18,6 @@
             <artifactId>javacord</artifactId>
             <version>${javacord.version}</version>
             <type>pom</type>
-        </dependency>
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>${log4j.version}</version>
         </dependency>
     </dependencies>
 
