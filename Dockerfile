@@ -4,9 +4,11 @@ LABEL maintainer="Jonathan Henrique Medeiros"
 
 COPY . /build
 
-RUN cd /build && mvn clean install
+RUN cd /build && \
+    mvn clean install
 
-RUN mkdir /app && mv /build/target/obot-1.0-shaded.jar /app/obot.jar
+RUN mkdir /app && \
+    mv /build/target/obot-1.0-shaded.jar /app/obot.jar
 
 FROM azul/zulu-openjdk:11.0.10
 

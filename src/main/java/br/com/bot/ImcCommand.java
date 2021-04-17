@@ -1,29 +1,30 @@
 package br.com.bot;
 
 import static br.com.bot.ImcRange.getImcRange;
+import static br.com.bot.Log.warning;
 import static java.lang.Double.parseDouble;
+import static java.lang.String.format;
 
 import java.util.Optional;
-import java.util.logging.Logger;
 
 public class ImcCommand {
 
     private static final int TOTAL_PARAMETERS = 4;
 
-    private static Logger log = Logger.getLogger(ImcCommand.class.getName());
-
     private final ImcResponse imcResponse;
+    private final MessagesProperties messagesProperties;
 
-    public ImcCommand(ImcResponse imcResponse) {
+    public ImcCommand(ImcResponse imcResponse, MessagesProperties messagesProperties) {
         this.imcResponse = imcResponse;
+        this.messagesProperties = messagesProperties;
     }
 
     public String execute(String message) {
         String[] separatedParameters = message.split(" ");
 
         if (separatedParameters.length != TOTAL_PARAMETERS) {
-            log.warning("Total of parameters received doesn't supported!");
-            return "Não consegui entender sua mensagem =( \nMe envie novamente seguindo o seguinte formato: `!imc {nome} {altura} {peso}`";
+            warning("Total of parameters received doesn't supported!");
+            return format("%s\n%s", messagesProperties.getExceededParameters(), messagesProperties.getUsage());
         }
 
         String name = separatedParameters[1];
@@ -34,14 +35,14 @@ public class ImcCommand {
             height = parseDouble(separatedParameters[2]);
             weight = parseDouble(separatedParameters[3]);
         } catch(NumberFormatException ex) {
-            log.warning("Received invalid height or weight parameters!");
-            return "Não consigo usar os parâmetros que você me passou para calcular seu IMC =/";
+            warning("Received invalid height or weight parameters!");
+            return format("%s\n%s", messagesProperties.getInvalidNumber(), messagesProperties.getUsage());
         }
 
         double userIMC = calculateUserIMC(height, weight);
         Optional<ImcRange> imcRange = getImcRange(userIMC);
 
-        return imcResponse.createResponse(name, userIMC, imcRange);
+        return imcResponse.createResponse(name, userIMC, imcRange, messagesProperties);
     }
 
     private double calculateUserIMC(double height, double weight) {

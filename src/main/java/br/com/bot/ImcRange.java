@@ -7,25 +7,25 @@ import java.util.Optional;
 public class ImcRange {
 
     private static final List<ImcRange> rangeList = Arrays.asList(
-            new ImcRange(0,18.5, "Se bater um vento voa hahah"),
+            new ImcRange(0,18.5, "Se cuida bater um vento meio forte tu voa hahah"),
             new ImcRange(18.5,  24.9, "Tá tranquilo, pode comer doritos com coca!"),
             new ImcRange(25.0,  29.9, "Tu tá bem, anda malhando?"),
             new ImcRange(30.0,  39.9, "Já pensou em se exercitar um pouco?"),
-            new ImcRange(40.0,  0, "ACADEMIA, JÁ!")
+            new ImcRange(40.0,  0, "DIETA E ACADEMIA, JÁ!")
     );
 
-    private final double lowValue;
+    private final double minValue;
     private final double maxValue;
-    private final String status;
+    private final String message;
 
-    public ImcRange(double lowValue, double maxValue, String status) {
-        this.lowValue = lowValue;
+    public ImcRange(double minValue, double maxValue, String message) {
+        this.minValue = minValue;
         this.maxValue = maxValue;
-        this.status = status;
+        this.message = message;
     }
 
-    public String getStatus() {
-        return status;
+    public String getMessage() {
+        return message;
     }
 
     public static Optional<ImcRange> getImcRange(double imc) {
@@ -35,15 +35,15 @@ public class ImcRange {
     }
 
     private boolean isValidRange(double imc) {
-        if (lowValue == 0 && imc <= maxValue) {
+        if (minValue == 0 && imc <= maxValue) {
             return true;
         }
 
-        if (maxValue == 0 && imc >= lowValue) {
+        if (maxValue == 0 && imc >= minValue) {
             return true;
         }
 
-        return imc >= lowValue && imc <= maxValue;
+        return imc >= minValue && imc <= maxValue;
     }
 
 }

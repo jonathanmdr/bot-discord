@@ -1,19 +1,21 @@
 package br.com.bot;
 
+import static br.com.bot.Log.info;
 import static java.lang.System.getenv;
 
-import java.util.logging.Logger;
+import java.io.IOException;
 
 import org.javacord.api.DiscordApi;
 import org.javacord.api.DiscordApiBuilder;
 
 public class BotMain {
 
-    public static void main(String[] args) {
-        Logger log = Logger.getLogger(BotMain.class.getName());
+    public static void main(String[] args) throws IOException {
+        PropertiesReader propertiesReader = new PropertiesReader();
+        MessagesProperties messagesProperties = propertiesReader.getMessageProperties();
 
         ImcResponse imcResponse = new ImcResponse();
-        ImcCommand imcCommand = new ImcCommand(imcResponse);
+        ImcCommand imcCommand = new ImcCommand(imcResponse, messagesProperties);
 
         DiscordApi api = new DiscordApiBuilder()
                 .setToken(getenv("TOKEN"))
@@ -22,12 +24,12 @@ public class BotMain {
 
         api.addMessageCreateListener(event -> {
             if (event.getMessageContent().startsWith("!imc")) {
-                log.info("Received a new message, processing initialized!");
+                info("Received a new message, processing initialized!");
 
                 String response = imcCommand.execute(event.getMessageContent());
                 event.getChannel().sendMessage(response);
 
-                log.info("Message processed, the process finished!");
+                info("Message processed, the process finished!");
             }
         });
     }
