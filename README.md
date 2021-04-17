@@ -19,6 +19,7 @@ Obot  é um bot para o aplicativo Discord desenvolvido em Java que calcula seu I
 
 ### Executando com Kubernetes:
 ```
+~$ kubectl create namespace obot
 ~$ kubectl apply -f ./kubernetes/deployment.yaml -f ./kubernetes/service.yaml
 ```
 > :warning: É necessário ter configurado uma `secret` de nome `obot-secret` com a chave `TOKEN` com um valor válido atribuído.
