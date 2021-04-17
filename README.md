@@ -8,7 +8,7 @@ Obot  é um bot para o aplicativo Discord desenvolvido em Java que calcula seu I
 
 ### Executando com Docker:
 ```
-~$ docker run -d -p 80:80 -name obot jonathanmdr/obot:latest
+~$ docker run -d -name obot jonathanmdr/obot:latest
 ```
 > :warning: É necessário ter configurado a variável de ambiente `TOKEN` do bot com um valor válido atribuído.
 
@@ -20,7 +20,7 @@ Obot  é um bot para o aplicativo Discord desenvolvido em Java que calcula seu I
 ### Executando com Kubernetes:
 ```
 ~$ kubectl create namespace obot
-~$ kubectl apply -f ./kubernetes/deployment.yaml -f ./kubernetes/service.yaml
+~$ kubectl apply -f ./kubernetes/deployment.yaml -f
 ```
 > :warning: É necessário ter configurado uma `secret` de nome `obot-secret` com a chave `TOKEN` com um valor válido atribuído.
 
