@@ -20,5 +20,3 @@ COPY --from=builder /app/* /app
 WORKDIR /app
 
 ENTRYPOINT ["java", "-jar", "obot-1.0-shaded.jar"]
-
-EXPOSE 80

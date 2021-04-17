@@ -14,8 +14,6 @@ spec:
         - name: obot-container
           image: jonathanmdr/obot:latest
           imagePullPolicy: Always
-          ports:
-            - containerPort: 80
           envFrom:
             - secretRef:
                 name: obot-secret
