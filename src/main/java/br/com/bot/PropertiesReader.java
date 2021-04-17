@@ -1,18 +1,24 @@
 package br.com.bot;
 
+import static java.util.Objects.requireNonNull;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.Properties;
 
 public class PropertiesReader {
 
     public MessagesProperties getMessageProperties() throws IOException {
-        InputStream inputStream = getClass().getResourceAsStream("messages.properties");
+        InputStreamReader inputStreamReader = new InputStreamReader(
+                requireNonNull(getClass().getClassLoader().getResourceAsStream("messages.properties")),
+                StandardCharsets.UTF_8
+        );
         Properties properties = new Properties();
 
         try {
-            properties.load(inputStream);
+            properties.load(inputStreamReader);
         } catch (IOException ex) {
             throw new FileNotFoundException("Properties file not found!");
         }
