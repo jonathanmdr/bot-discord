@@ -12,11 +12,6 @@ Obot  é um bot para o aplicativo Discord desenvolvido em Java que calcula seu I
 ```
 > :warning: É necessário ter configurado a variável de ambiente `TOKEN` do bot com um valor válido atribuído.
 
-#### Configurando o Token:
-```
-~$ export TOKEN="Asdfg123Gfdsa321"
-```
-
 ### Executando com Kubernetes:
 ```
 ~$ kubectl create namespace obot

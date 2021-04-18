@@ -22,7 +22,7 @@ public class ImcCommandTest {
     }
 
     @Test
-    public void executeCommand_whenExceededParameters_thenReturnExceededParametersMessage() {
+    public void givenCallExecuteCommand_whenExceededParameters_thenReturnExceededParametersMessage() {
         String response = subject.execute("!imc Jonathan 1.75 80 80");
 
         assertThat(
@@ -32,7 +32,7 @@ public class ImcCommandTest {
     }
 
     @Test
-    public void executeCommand_whenInvalidNumber_thenReturnInvalidNumberMessage() {
+    public void givenCallExecuteCommand_whenInvalidNumber_thenReturnInvalidNumberMessage() {
         String response = subject.execute("!imc Jonathan Henrique 80");
 
         assertThat(
@@ -42,7 +42,7 @@ public class ImcCommandTest {
     }
 
     @Test
-    public void executeCommand_whenValidParameter_thenReturnUserImcMessage() {
+    public void givenCallExecuteCommand_whenValidParameter_thenReturnUserImcMessage() {
         String response = subject.execute("!imc Jonathan 1.75 80");
 
         assertThat(

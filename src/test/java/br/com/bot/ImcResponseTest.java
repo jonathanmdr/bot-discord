@@ -23,7 +23,7 @@ public class ImcResponseTest {
     }
 
     @Test
-    public void createResponse_whenReceivedAValidImcRange_thenReturnUserImcMessage() {
+    public void givenCallCreateResponse_whenReceivedAValidImcRange_thenReturnUserImcMessage() {
         Optional<ImcRange> imcRange = ImcRange.getImcRange(26.0);
         String response = response("%s seu IMC é: %s\n%s", "Jonathan", 26.0, imcRange.get().getMessage());
 
@@ -34,7 +34,7 @@ public class ImcResponseTest {
     }
 
     @Test
-    public void createResponse_whenReceivedAInvalidImcRange_thenReturnResponseUnrecognizedMessage() {
+    public void givenCallCreateResponse_whenReceivedAInvalidImcRange_thenReturnResponseUnrecognizedMessage() {
         String response = response("%s seu IMC é: %s\n%s", "Jonathan", -1, messagesProperties.getResponseUnrecognized());
 
         assertThat(
