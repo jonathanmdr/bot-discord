@@ -28,7 +28,7 @@ public class ImcCommandTest {
         String response = subject.execute("!imc Jonathan 1.75 80 80");
 
         assertThat(
-      messagesProperties.getExceededParameters() + "\n" +
+            messagesProperties.getExceededParameters() + "\n" +
             messagesProperties.getUsage()
         ).isEqualTo(response);
     }
@@ -38,7 +38,7 @@ public class ImcCommandTest {
         String response = subject.execute("!imc Jonathan Henrique 80");
 
         assertThat(
-      messagesProperties.getInvalidNumber() + "\n" +
+            messagesProperties.getInvalidNumber() + "\n" +
             messagesProperties.getUsage()
         ).isEqualTo(response);
     }
@@ -48,7 +48,7 @@ public class ImcCommandTest {
         String response = subject.execute("!imc Jonathan 1.75 80");
 
         assertThat(
-      "Jonathan seu IMC é: 26.0" + "\n" +
+            "Jonathan seu IMC é: 26.0" + "\n" +
             "Tu tá bem, anda malhando?"
         ).isEqualTo(response);
     }
