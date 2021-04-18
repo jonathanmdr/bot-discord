@@ -29,7 +29,7 @@ public class ImcResponseTest {
         String response = subject.createResponse("Jonathan", 26.0, imcRange, messagesProperties);
 
         assertThat(
-      "Jonathan seu IMC é: 26.0" + "\n" +
+            "Jonathan seu IMC é: 26.0" + "\n" +
             "Tu tá bem, anda malhando?"
         ).isEqualTo(response);
     }
@@ -40,7 +40,7 @@ public class ImcResponseTest {
         String response = subject.createResponse("Jonathan", 0.0, imcRange, messagesProperties);
 
         assertThat(
-      "Jonathan seu IMC é: 0.0" + "\n" +
+            "Jonathan seu IMC é: 0.0" + "\n" +
             "Seus dados não fazem sentido, tu é normal?!"
         ).isEqualTo(response);
     }
