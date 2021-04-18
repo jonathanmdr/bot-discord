@@ -8,7 +8,7 @@ Obot  é um bot para o aplicativo Discord desenvolvido em Java que calcula seu I
 
 ### Executando com Docker:
 ```
-~$ docker run -d -name obot jonathanmdr/obot:latest
+~$ docker run -d -e TOKEN="Asdfg123Gfdsa321" -name obot jonathanmdr/obot:latest
 ```
 > :warning: É necessário ter configurado a variável de ambiente `TOKEN` do bot com um valor válido atribuído.
 

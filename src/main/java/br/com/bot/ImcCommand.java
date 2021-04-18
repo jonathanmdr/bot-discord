@@ -1,10 +1,10 @@
 package br.com.bot;
 
 import static br.com.bot.ImcRange.getImcRange;
+import static br.com.bot.ImcResponse.response;
 import static br.com.bot.Log.error;
 import static br.com.bot.Log.warning;
 import static java.lang.Double.parseDouble;
-import static java.lang.String.format;
 
 import java.util.Optional;
 
@@ -12,11 +12,9 @@ public class ImcCommand {
 
     private static final int PARAMETERS_LIMIT = 4;
 
-    private final ImcResponse imcResponse;
     private final MessagesProperties messagesProperties;
 
-    public ImcCommand(ImcResponse imcResponse, MessagesProperties messagesProperties) {
-        this.imcResponse = imcResponse;
+    public ImcCommand(MessagesProperties messagesProperties) {
         this.messagesProperties = messagesProperties;
     }
 
@@ -25,7 +23,7 @@ public class ImcCommand {
 
         if (separatedParameters.length != PARAMETERS_LIMIT) {
             warning("Total of parameters received doesn't supported!");
-            return format("%s\n%s", messagesProperties.getExceededParameters(), messagesProperties.getUsage());
+            return response("%s\n%s", messagesProperties.getExceededParameters(), messagesProperties.getUsage());
         }
 
         String name = separatedParameters[1];
@@ -37,13 +35,15 @@ public class ImcCommand {
             weight = parseDouble(separatedParameters[3]);
         } catch(NumberFormatException ex) {
             error("Received invalid height or weight parameters!".concat("Error: ").concat(ex.getLocalizedMessage()));
-            return format("%s\n%s", messagesProperties.getInvalidNumber(), messagesProperties.getUsage());
+            return response("%s\n%s", messagesProperties.getInvalidNumber(), messagesProperties.getUsage());
         }
 
         double userIMC = calculateUserIMC(height, weight);
         Optional<ImcRange> imcRange = getImcRange(userIMC);
 
-        return imcResponse.createResponse(name, userIMC, imcRange, messagesProperties);
+        String response = imcRange.isPresent() ? imcRange.get().getMessage() : messagesProperties.getResponseUnrecognized();
+
+        return response("%s seu IMC é: %s\n%s", name, userIMC, response);
     }
 
     private double calculateUserIMC(double height, double weight) {

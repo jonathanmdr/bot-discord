@@ -13,9 +13,7 @@ public class BotMain {
     public static void main(String[] args) throws IOException {
         PropertiesReader propertiesReader = new PropertiesReader();
         MessagesProperties messagesProperties = propertiesReader.getMessageProperties();
-
-        ImcResponse imcResponse = new ImcResponse();
-        ImcCommand imcCommand = new ImcCommand(imcResponse, messagesProperties);
+        ImcCommand imcCommand = new ImcCommand(messagesProperties);
 
         DiscordApi api = new DiscordApiBuilder()
                 .setToken(getenv("TOKEN"))

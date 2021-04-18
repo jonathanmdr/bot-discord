@@ -8,7 +8,6 @@ import org.junit.Test;
 public class ImcCommandTest {
 
     private MessagesProperties messagesProperties;
-    private ImcResponse imcResponse;
     private ImcCommand subject;
 
     @Before
@@ -19,8 +18,7 @@ public class ImcCommandTest {
                 "Me envie outra mensagem no seguinte formato: `!imc {nome} {altura} {peso}`",
                 "Seus dados não fazem sentido, tu é normal?!"
         );
-        imcResponse = new ImcResponse();
-        subject = new ImcCommand(imcResponse, messagesProperties);
+        subject = new ImcCommand(messagesProperties);
     }
 
     @Test
